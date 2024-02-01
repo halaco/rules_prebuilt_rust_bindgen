@@ -1,3 +1,5 @@
+None module(name="io_halaco_rules_prebuilt_rust_bindgen", version="0.1.0")
+
 bazel_dep(name = "rules_cc", version = "0.0.9")
 
 bazel_dep(name = "rules_pkg", version = "0.10.0")
