@@ -1,0 +1,53 @@
+load("@rules_pkg//pkg:tar.bzl", "pkg_tar")
+load("//:version.bzl", "RULES_RUST_VERSION")
+load("@rules_rust//bindgen:defs.bzl", "rust_bindgen_toolchain")
+load("//bindgen/private:defs.bzl", "cc_library_from_file")
+load(":defs.bzl", "bindgen_tool_files")
+
+cc_library_from_file(
+    name = "libclang",
+    lib = "@bindgen_prebuilt_tools//:libclang"
+)
+
+
+rust_bindgen_toolchain(
+    name = "prebuilt_bindgen_toolchain_impl",
+    bindgen = "@bindgen_prebuilt_tools//:bindgen",
+    clang = "@bindgen_prebuilt_tools//:clang_compiler",
+    libclang = ":libclang",
+)
+
+
+toolchain(
+    name = "prebuilt_bindgen_toolchain",
+    toolchain = "prebuilt_bindgen_toolchain_impl",
+    toolchain_type = "@rules_rust//bindgen:toolchain_type",
+)
+
+
+bindgen_tool_files(
+    name = "bindgen_tool_files",
+    bindgen = "@rules_rust//bindgen/3rdparty:bindgen",
+    clang = "@llvm-project//clang:clang",
+    libclang = "@llvm-project//clang:libclang",
+)
+
+
+pkg_tar(
+    name = "bindgen_prebuilt_binaries_tar",
+    srcs = [
+        ":bindgen_tool_files"
+    ],
+    extension = "tar.xz",
+    out = "bindgen_prebuilt_binaries-v{version}.tar.xz".format(version = RULES_RUST_VERSION),
+)
+
+
+genrule(
+    name = "bindgen_prebuilt_binaries",
+    srcs = [
+        ":bindgen_prebuilt_binaries_tar",
+    ],
+    outs = ["bindgen_prebuilt_binaries-v{version}.sha256".format(version = RULES_RUST_VERSION)],
+    cmd = "sha256sum $(locations :bindgen_prebuilt_binaries_tar) > $@",
+)
