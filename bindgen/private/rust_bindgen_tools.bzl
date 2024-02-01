@@ -127,4 +127,4 @@ filegroup(
         build_file_content = build_file,
     )
 
-    native.register_toolchains("//rules/prebuilt_bindgen_tools:prebuilt_bindgen_toolchain")
+    native.register_toolchains("//bindgen:prebuilt_bindgen_toolchain")
