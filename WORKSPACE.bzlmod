@@ -1,5 +1,5 @@
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
-load(":version.bzl", "RULES_RUST_VERSION", "RULES_RUST_SHA256", "PREBUILT_BINDGEN_TOOLS_SHA256")
+load(":version.bzl", "RULES_RUST_VERSION", "RULES_RUST_SHA256")
 
 http_archive(
     name = "rules_rust",
@@ -23,13 +23,6 @@ load("@rules_rust//bindgen:repositories.bzl", "rust_bindgen_dependencies", "rust
 rust_bindgen_dependencies()
 
 rust_bindgen_register_toolchains(register_toolchains = False)
-
-load("//rules/prebuilt_bindgen_tools:defs.bzl", "prebuilt_bindgen_register_toolchains")
-
-prebuilt_bindgen_register_toolchains(
-    url = "https://storage.googleapis.com/download-6e93fb8c/bindgen_prebuilt_binaries-v{version}.tar.xz".format(version = RULES_RUST_VERSION),
-    sha256 = PREBUILT_BINDGEN_TOOLS_SHA256,
-)
 
 load("@rules_rust//bindgen:transitive_repositories.bzl", "rust_bindgen_transitive_dependencies")
 

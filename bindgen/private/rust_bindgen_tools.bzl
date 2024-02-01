@@ -102,19 +102,19 @@ def prebuilt_bindgen_register_toolchains(url, sha256):
     build_file = """# Biuld file for bindgen_prebuilt_binaries
 
 filegroup(
-  name = "bindgen",
+  name = "prebuilt_bindgen",
   srcs = [ "bindgen-cli" ],
   visibility = ["//visibility:public"],
 )
 
 filegroup(
-  name = "clang_compiler",
+  name = "prebuilt_clang",
   srcs = [ "clang" ],
   visibility = ["//visibility:public"],
 )
 
 filegroup(
-  name = "libclang",
+  name = "prebuilt_libclang",
   srcs = [ "libclang.so" ],
   visibility = ["//visibility:public"],
 )

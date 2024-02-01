@@ -5,16 +5,16 @@ load("//bindgen/private:defs.bzl", "cc_library_from_file")
 load(":defs.bzl", "bindgen_tool_files")
 
 cc_library_from_file(
-    name = "libclang",
-    lib = "@bindgen_prebuilt_tools//:libclang"
+    name = "libclang_lib",
+    lib = "@bindgen_prebuilt_tools//:prebuilt_libclang"
 )
 
 
 rust_bindgen_toolchain(
     name = "prebuilt_bindgen_toolchain_impl",
-    bindgen = "@bindgen_prebuilt_tools//:bindgen",
-    clang = "@bindgen_prebuilt_tools//:clang_compiler",
-    libclang = ":libclang",
+    bindgen = "@bindgen_prebuilt_tools//:prebuilt_bindgen",
+    clang = "@bindgen_prebuilt_tools//:prebuilt_clang",
+    libclang = ":libclang_lib",
 )
 
 

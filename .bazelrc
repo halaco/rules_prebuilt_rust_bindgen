@@ -1,15 +1,8 @@
-startup --windows_enable_symlinks
-
-common --enable_platform_specific_config
 common --enable_bzlmod
 common --lockfile_mode=update
 
-build --action_env=BAZEL_CXXOPTS="-std=c++17"
-
 # for buildbuddy
 build:linux --workspace_status_command=$(pwd)/workspace_status.sh
-# Enable runfiles on Windows (symlink must be enabled)
-build:windows --enable_runfiles
 
 try-import .bazelrc.local
-try-improt .bazelrc.remote
+try-import .bazelrc.remote

@@ -1,0 +1,5 @@
+.bazelrc.remote
+bazel-bin
+bazel-out
+bazel-rules_prebuilt_rust_bindgen
+bazel-testlogs
