@@ -1,6 +1,6 @@
 {
   "lockFileVersion": 1,
-  "moduleFileHash": "6f8be0dca61d2399476acacd58000c4b218f30f3f0c3f93da18717b74c88891f",
+  "moduleFileHash": "b00f6fe9fd5389d701d27101ccbc6b635666bd3c1bb34666a894b69005d5ed19",
   "flags": {
     "cmdRegistries": [
       "https://bcr.bazel.build/"
@@ -17,10 +17,10 @@
   },
   "moduleDepGraph": {
     "<root>": {
-      "name": "io_halaco_rules_prebuilt_rust_bindgen",
+      "name": "io_halaco_prebuilt_rust_bindgen",
       "version": "0.1.0",
       "key": "<root>",
-      "repoName": "io_halaco_rules_prebuilt_rust_bindgen",
+      "repoName": "io_halaco_prebuilt_rust_bindgen",
       "executionPlatformsToRegister": [],
       "toolchainsToRegister": [],
       "extensionUsages": [],
