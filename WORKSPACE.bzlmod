@@ -1,9 +1,9 @@
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
-load(":version.bzl", "RULES_RUST_VERSION", "RULES_RUST_SHA256")
+load(":version.bzl", "RULES_RUST_VERSION", "RULES_RUST_INTEGRITY")
 
 http_archive(
     name = "rules_rust",
-    sha256 = RULES_RUST_SHA256,
+    integrity  = RULES_RUST_INTEGRITY,
     urls = ["https://github.com/bazelbuild/rules_rust/releases/download/{version}/rules_rust-v{version}.tar.gz".format(version = RULES_RUST_VERSION)],
 )
 
