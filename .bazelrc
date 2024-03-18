@@ -3,6 +3,7 @@ common --lockfile_mode=update
 
 # for buildbuddy
 build:linux --workspace_status_command=$(pwd)/workspace_status.sh
+# build --incompatible_enable_cc_toolchain_resolution
 
 try-import .bazelrc.local
 try-import .bazelrc.remote

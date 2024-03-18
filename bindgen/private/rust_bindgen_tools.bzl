@@ -52,7 +52,7 @@ bindgen_tool_files = rule(
 
 
 def _cc_library_from_file_impl(ctx):
-    cc_toolchain = find_cpp_toolchain(ctx)
+    cc_toolchain = ctx.attr._cc_toolchain
 
     feature_configuration = cc_common.configure_features(
         ctx = ctx,
@@ -83,7 +83,7 @@ def _cc_library_from_file_impl(ctx):
     ]
 
 
-cc_library_from_file = rule(
+cc_library_from_file_x = rule(
     implementation = _cc_library_from_file_impl,
     attrs = {
         "lib": attr.label(
