@@ -83,7 +83,7 @@ def _cc_library_from_file_impl(ctx):
     ]
 
 
-cc_library_from_file = rule(
+cc_library_from_file_x = rule(
     implementation = _cc_library_from_file_impl,
     attrs = {
         "lib": attr.label(
